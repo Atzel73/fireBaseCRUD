@@ -17,10 +17,15 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-export const saveTask = (title, description) => {
 
-    
-  addDoc(collection(db, 'tasks'), { title, description })
+
+
+///Guardar datos en FireBase
+export const saveTask = (title, description, name) => {
+  addDoc(collection(db, 'tasks'), 
+  { title,
+    description, 
+    name})
     .then(() => {
       console.log("Tarea guardada correctamente:", title, description);
     })

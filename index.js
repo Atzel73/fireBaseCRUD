@@ -15,8 +15,8 @@ taskForm.addEventListener("submit", (e) => {
 
     const title = taskForm['task-title'];
     const description = taskForm['task-description'];
-
-        saveTask(title.value, description.value);
-    
+    const name = taskForm['task-user'];
+        saveTask(title.value, description.value, name.value);
+    taskForm.reset();
 
 })
