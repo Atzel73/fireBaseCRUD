@@ -29,11 +29,12 @@ const db = getFirestore(app);
 
 
 ///Guardar datos en FireBase
-export const saveTask = (title, description, name) => {
+export const saveTask = (title, description, name, image) => {
   addDoc(collection(db, 'tasks'), 
   { title,
     description, 
-    name})
+    name,
+    image})
     .then(() => {
       console.log("Tarea guardada correctamente:", title, description);
     })

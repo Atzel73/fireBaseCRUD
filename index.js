@@ -19,13 +19,17 @@ window.addEventListener('DOMContentLoaded', async () => {
             const task = doc.data();
 
             html += `
-        <div>
-         <h2>User: ${task.name}</h2>
-         <h3>Title: ${task.title}</h3>
-         <p>Description: ${task.description}</p>
-         <button class='btn-delete' data-id="${doc.id}">Delete</button>
-         <button class='btn-edit' data-id="${doc.id}">Edit</button>
-        </div>
+            <div class="card" style="width: 18rem;">
+            <img src="${task.image}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">${task.name}</h5>
+              <p class="card-text">${task.title}</p>
+              <p class="card-text">${task.description}</p>
+              <button class='btn-delete' data-id="${doc.id}">Delete</button>
+              <button class='btn-edit' data-id="${doc.id}">Edit</button>
+            </div>
+          </div>
+          
     `;
         });
         taskContainer.innerHTML = html;
@@ -70,13 +74,14 @@ taskForm.addEventListener("submit", (e) => {
     const title = taskForm['task-title'];
     const description = taskForm['task-description'];
     const name = taskForm['task-user'];
+    const image = taskForm['task-photo'];
 
 
     if (!editStatus) {
-        saveTask(title.value, description.value, name.value);
+        saveTask(title.value, description.value, name.value, image.value);
 
     } else {
-        updateTask(id, {title: title.value, description: description.value, name: name.value});
+        updateTask(id, {title: title.value, description: description.value, name: name.value, image: image.value});
             editStatus = false;
     }
     taskForm.reset();

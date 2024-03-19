@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem;">
+  <img src="${task.image}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">${task.name}</h5>
+    <p class="card-text">${task.title}</p>
+    <p class="card-text">${task.description}</p>
+    <button class='btn-delete' data-id="${doc.id}">Delete</button>
+    <button class='btn-edit' data-id="${doc.id}">Edit</button>
+  </div>
+</div>
+
+
+
+
