@@ -6,7 +6,9 @@ import { getFirestore,
         getDocs, 
         onSnapshot, 
         deleteDoc, 
-        doc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+        doc,
+        getDoc,
+        updateDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
 // Tu configuración de Firebase
 const firebaseConfig = {
@@ -49,3 +51,10 @@ export const onGetTasks = (callback) => onSnapshot(collection(db, 'tasks'), call
 ///Borrar datos
 
 export  const deleteTask = id => deleteDoc(doc(db, 'tasks', id))
+
+///Editar datos
+
+export const getTask = id =>  getDoc(doc(db, 'tasks', id))
+
+
+export const updateTask = (id, newField) => updateDoc(doc(db, 'tasks', id), newField)
