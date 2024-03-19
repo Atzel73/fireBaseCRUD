@@ -1,6 +1,12 @@
 // Importa las funciones que necesitas del SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { getFirestore, 
+        collection, 
+        addDoc, 
+        getDocs, 
+        onSnapshot, 
+        deleteDoc, 
+        doc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
 // Tu configuración de Firebase
 const firebaseConfig = {
@@ -39,3 +45,7 @@ export const saveTask = (title, description, name) => {
 export const getTasks = () => getDocs(collection(db, 'tasks'))
 
 export const onGetTasks = (callback) => onSnapshot(collection(db, 'tasks'), callback)
+
+///Borrar datos
+
+export  const deleteTask = id => deleteDoc(doc(db, 'tasks', id))

@@ -1,5 +1,5 @@
 
-import { saveTask, getTasks, onGetTasks } from './firebase.js'
+import { saveTask, getTasks, onGetTasks,deleteTask } from './firebase.js'
 
 
 
@@ -16,15 +16,25 @@ window.addEventListener('DOMContentLoaded', async () => {
 
         querySnapshot.forEach(doc => {
             const task = doc.data();
+            
             html += `
         <div>
          <h2>User: ${task.name}</h2>
          <h3>Title: ${task.title}</h3>
          <p>Description: ${task.description}</p>
+         <button class='btn-delete' data-id="${doc.id}">Delete</button>
         </div>
     `;
         });
- taskContainer.innerHTML = html;
+        taskContainer.innerHTML = html;
+        const btnsDelete = taskContainer.querySelectorAll('.btn-delete');
+        btnsDelete.forEach(btn =>  {
+            btn.addEventListener('click', ({target: {dataset}}) => {
+
+                deleteTask(dataset.id);
+                    console.log("Datos borrados!");
+            })
+        })
     });
 });
 
