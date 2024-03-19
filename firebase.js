@@ -1,6 +1,6 @@
 // Importa las funciones que necesitas del SDK
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 
 // Tu configuración de Firebase
 const firebaseConfig = {
@@ -33,3 +33,9 @@ export const saveTask = (title, description, name) => {
       console.error("Error al guardar la tarea:", error);
     });
 };
+
+
+///Enlistar datos
+export const getTasks = () => getDocs(collection(db, 'tasks'))
+
+export const onGetTasks = (callback) => onSnapshot(collection(db, 'tasks'), callback)
